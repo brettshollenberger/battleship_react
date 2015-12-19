@@ -11,4 +11,3 @@ class MatchingMachine
     end
   end
 end
-

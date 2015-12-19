@@ -15,6 +15,9 @@ gem 'connection_pool'
 gem 'daemons'
 gem 'redis'
 gem 'foreman'
+gem 'firebase'
+gem 'actioncable', git: 'https://github.com/rails/actioncable.git', ref: '4073a3e3fe77141d09ed767224a1089796de2f7d'
+gem 'thin'
 
 group :development, :test do
   gem 'pry'
@@ -23,4 +26,3 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'zeus'
 end
-
