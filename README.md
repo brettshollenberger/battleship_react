@@ -19,8 +19,14 @@ Import these certificates into your Trust Store.
 bin/matchingd start
 ```
 
-2) Run workers, http server, and https server
+2) Run workers, http server, https server, and cable server
 
 ```bash
 foreman start
+```
+
+3) Run webpack to watch for javascript changes
+
+```bash
+webpack -w ./webpack.config.js
 ```

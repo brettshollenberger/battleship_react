@@ -16,8 +16,8 @@ gem 'daemons'
 gem 'redis'
 gem 'foreman'
 gem 'firebase'
-gem 'actioncable', git: 'https://github.com/rails/actioncable.git', ref: '4073a3e3fe77141d09ed767224a1089796de2f7d'
-gem 'thin'
+gem 'actioncable', github: "rails/actioncable"
+gem 'puma'
 
 group :development, :test do
   gem 'pry'

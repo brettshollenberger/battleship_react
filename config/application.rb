@@ -10,6 +10,6 @@ module BattleshipReact
   class Application < Rails::Application
     config.active_record.raise_in_transactional_callbacks = true
 
-    config.session_store :redis_store, servers: Redis.current
+    config.session_store :redis_store, 'redis://localhost:6379/0/cache'
   end
 end

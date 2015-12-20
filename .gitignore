@@ -14,3 +14,5 @@
 
 # Ignore dev SSL keys and certificates
 /ssl
+/node_modules
+/app/assets/javascripts/dist

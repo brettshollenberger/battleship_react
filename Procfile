@@ -1,3 +1,4 @@
 rails: zeus s
-rails_secure: thin start -p 3001 --ssl --ssl-verify --ssl-key-file ./ssl/battleship.key --ssl-cert-file ./ssl/battleship.pem
+rails_secure: bin/rails_secure
+cable_server: bin/cable
 sidekiq: sidekiq -C config/sidekiq.yml

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+thin start -p 3001 --ssl --ssl-verify --ssl-key-file ./ssl/battleship.key --ssl-cert-file ./ssl/battleship.pem
