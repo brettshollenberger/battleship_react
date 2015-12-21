@@ -1,14 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-var App = require("./app.js");
-
-App.messages = App.cable.subscriptions.create('MessagesChannel', {
-  received: function(data) {
-    console.log("GOT DAT MESSAG DAWG");
-    console.log(data.message);
-  }
-});
+require("./channels/users.js");
 
 // "<p><b>[#{data.username}]:</b> #{data.message}</p>"
 

@@ -18,7 +18,7 @@ module ApplicationCable
     end
 
     def session_id
-      cookies[:battleship_session_id]
+      cookies.signed[:battleship_session_id]
     end
   end
 end
