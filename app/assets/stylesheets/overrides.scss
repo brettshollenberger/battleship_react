@@ -1,0 +1,88 @@
+$border-radius: 10px;
+$margin: 20px;
+$padding: 20px;
+$dark-blue: #231B34;
+$light-red: #FF6550;
+$white: #FEFFFF;
+
+.shadowed {
+  text-shadow: 2px 2px 0 white, 3px 3px 0 #ddd;
+}
+
+body {
+  background-color: $dark-blue;
+  font-family: "Source Code Pro";
+  font-weight: "400";
+}
+
+#game-window {
+  max-width: 900px;
+  max-height: 700px;
+  margin: $margin auto;
+}
+
+.centered {
+  text-align: center;
+}
+
+.white {
+  color: $white;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-family: sans-serif;
+  color: #1A2843;
+}
+
+h1 {
+  font-family: "VT323", "sans-serif";
+  font-size: 44px;
+  color: $white;
+}
+
+#main-title {
+  h1 {
+    font-family: "VT323", "sans-serif";
+    text-align: center;
+    color: $light-red;
+  }
+}
+
+p {
+  font-size: 16px;
+}
+
+button {
+  border: none;
+  border-radius: $border-radius;
+  padding: $padding/2;
+  font-family: "Source Code Pro", "sans-serif";
+  font-size: 20px;
+}
+
+#game-launcher {
+  background-color: $light-red;
+  color: $dark-blue;
+  width: 500px;
+  height: 500px;
+  border-radius: $border-radius;
+  padding: $padding;
+  margin: auto;
+
+  .games-list {
+    height: 265px;
+    max-height: 265px;
+    overflow-y: scroll;
+  }
+
+  button.find-game-btn {
+    width: 100%;
+    background-color: $dark-blue;
+    color: $white;
+  }
+
+  button:hover {
+    background-color: $white;
+    color: $dark-blue;
+  }
+}

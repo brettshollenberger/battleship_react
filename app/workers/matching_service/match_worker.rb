@@ -23,7 +23,7 @@ module MatchingService
       ActionCable.server.broadcast(
         "users_#{player_id}", 
         resource_type: "game",
-        action: "create",
+        action: "clone",
         args: {
           id: game_id,
           player_ids: player_ids,

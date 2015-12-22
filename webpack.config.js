@@ -7,7 +7,7 @@ module.exports = {
   context: js_root,
   resolve: {
     root: js_root,
-    moduleDirectories: [js_root, path.join(root_path, "node_modules")]
+    moduleDirectories: [js_root, path.join(root_path, "node_modules"), "web_modules"]
   },
   entry: [path.join(js_root, "index.jsx")],
   output: {

@@ -2,7 +2,7 @@ import React from "react";
 
 var ActionRegistry = require("../../actions/registry.js");
 
-class CreateJoinGameRequestButton extends React.Component {
+class FindAGameButton extends React.Component {
   constructor(props) {
     super(props);
 
@@ -14,9 +14,8 @@ class CreateJoinGameRequestButton extends React.Component {
   }
 
   render() {
-    return <button onClick={this.createJoinGameRequest} className="add-game-btn pure-button pure-button-primary">Find A Game!</button>;
+    return <button onClick={this.createJoinGameRequest} className="find-game-btn pure-button pure-button-primary">Find A Game</button>;
   }
 }
 
-module.exports = CreateJoinGameRequestButton;
-
+module.exports = FindAGameButton;

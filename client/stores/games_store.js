@@ -1,17 +1,11 @@
 var Dispatcher     = require("../dispatcher"),
-    ActionRegistry = require("../actions/registry.js"),
     EventEmitter   = require("events").EventEmitter,
     assign         = require("object-assign"),
-    moment         = require("moment"),
     _store         = {
-      requests: []
+      games: {}
     };
 
-var JoinGameRequestsStore = assign({}, EventEmitter.prototype, {
-  create: function(args) {
-    _store.requests.push({timestamp: moment().format("MM/DD/YYYY - hh:mm:ss")});
-  },
-
+var GamesStore = assign({}, EventEmitter.prototype, {
   get: function(name) {
     return _store[name];
   },
@@ -27,10 +21,10 @@ var JoinGameRequestsStore = assign({}, EventEmitter.prototype, {
 
 Dispatcher.register(function(action) {
   switch(action.type) {
-    case "CREATE_JOIN_GAME_REQUEST":
-      JoinGameRequestsStore.create(action.args);
-      JoinGameRequestsStore.emit("CREATED_JOIN_GAME_REQUEST", action.args);
+    // case GamesConstants:
+    //   GamesStore.clone(action.attributes);
+    //   GamesStore.emit(GamesConstants.CREATE);
   }
 });
 
-module.exports = JoinGameRequestsStore;
+module.exports = GamesStore;

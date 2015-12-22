@@ -1,17 +1,15 @@
+// View store manages the current view.
+//
+// It listens for particular events, and changes views as necessary.
+//
 var Dispatcher     = require("../dispatcher"),
-    ActionRegistry = require("../actions/registry.js"),
     EventEmitter   = require("events").EventEmitter,
     assign         = require("object-assign"),
-    moment         = require("moment"),
     _store         = {
-      requests: []
+      currentView: ""
     };
 
-var JoinGameRequestsStore = assign({}, EventEmitter.prototype, {
-  create: function(args) {
-    _store.requests.push({timestamp: moment().format("MM/DD/YYYY - hh:mm:ss")});
-  },
-
+var ViewsStore = assign({}, EventEmitter.prototype, {
   get: function(name) {
     return _store[name];
   },
@@ -22,15 +20,19 @@ var JoinGameRequestsStore = assign({}, EventEmitter.prototype, {
 
   removeListener: function(eventName, callback) {
     this.removeListener(eventName, callback);
+  },
+
+  update: function(name) {
+    _store.currentView = name;
+    this.emit("UPDATED_VIEW", _store.currentView);
   }
 });
 
 Dispatcher.register(function(action) {
   switch(action.type) {
     case "CREATE_JOIN_GAME_REQUEST":
-      JoinGameRequestsStore.create(action.args);
-      JoinGameRequestsStore.emit("CREATED_JOIN_GAME_REQUEST", action.args);
+      ViewsStore.update("game_waiting_room");
   }
 });
 
-module.exports = JoinGameRequestsStore;
+module.exports = ViewsStore;

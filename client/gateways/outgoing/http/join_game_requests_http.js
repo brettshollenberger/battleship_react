@@ -1,25 +1,16 @@
-var Dispatcher     = require ("../../../dispatcher.js"),
-    ActionRegistry = require("../../../actions/registry.js"),
-    $              = require("jquery"),
-    AUTH_TOKEN     = $('meta[name=csrf-token]').attr('content');
+var JoinGameRequestsStore = require("../../../stores/join_game_requests_store.js"),
+    ActionRegistry        = require("../../../actions/registry.js"),
+    ajax                  = require("./ajax.js");
 
 var JoinGameRequestsHttp = {
   createJoinGameRequest: function(args) {
-    $.ajax({
+    ajax({
       type: "POST",
-      url: "/api/v1/join_game_requests",
-      headers: {
-        "X-CSRF-Token": AUTH_TOKEN
-      }
+      url: "/api/v1/join_game_requests"
     });
   }
 };
 
-Dispatcher.register(function(action) {
-  switch(action.type) {
-    case "CREATE_JOIN_GAME_REQUEST":
-      JoinGameRequestsHttp.createJoinGameRequest(action.args);
-  }
-});
+JoinGameRequestsStore.addListener("CREATED_JOIN_GAME_REQUEST", JoinGameRequestsHttp.createJoinGameRequest)
 
 module.exports = JoinGameRequestsHttp;

@@ -7,8 +7,8 @@ var App            = require("../../../app.js"),
 // same name.
 //
 class UsersChannel extends GenericChannel {
-  createGame(args) {
-    ActionRegistry.GAMES.CREATE_GAME(args);
+  cloneGame(args) {
+    ActionRegistry.GAMES.CLONE_GAME(args);
   }
 }
 

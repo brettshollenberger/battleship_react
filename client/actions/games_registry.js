@@ -1,9 +1,9 @@
 var Dispatcher = require("../dispatcher.js");
 
 module.exports = {
-  CREATE_GAME: function(args) {
+  CLONE_GAME: function(args) {
     Dispatcher.dispatch({
-      type: "CREATE_GAME",
+      type: "CLONE_GAME",
       args: args
     });
   }
