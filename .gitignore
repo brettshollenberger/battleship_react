@@ -14,5 +14,12 @@
 
 # Ignore dev SSL keys and certificates
 /ssl
+
+# Ignore frontend dependencies
 /node_modules
+
+# Ignore built files; these can be built in prod pipeline
 /app/assets/javascripts/dist
+
+# Ignore private file for local development environment variables
+.env

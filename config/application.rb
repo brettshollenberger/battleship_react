@@ -11,5 +11,8 @@ module BattleshipReact
     config.active_record.raise_in_transactional_callbacks = true
 
     config.session_store :redis_store, 'redis://localhost:6379/0/cache'
+
+    FIREBASE_URL    = "https://klax.firebaseio.com/"
+    FIREBASE_CLIENT = Firebase::Client.new(FIREBASE_URL, ENV["FIREBASE_SECRET"])
   end
 end
