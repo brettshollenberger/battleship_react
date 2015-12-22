@@ -3,17 +3,15 @@ module MatchingService
     include Sidekiq::Worker
 
     def perform(player_ids)
-      p "Received player_ids #{player_ids}"
-
       response = firebase_client.push("games", {
-        players: player_ids,
+        player_ids: player_ids,
         state: "unstarted"
       })
 
       game_id = response.body["name"]
 
       player_ids.each do |player_id|
-        alert_client(player_id, game_id)
+        alert_client(player_id, player_ids, game_id)
       end
     end
 
@@ -21,11 +19,16 @@ module MatchingService
       BattleshipReact::Application::FIREBASE_CLIENT
     end
 
-    def alert_client(player_id, game_id)
+    def alert_client(player_id, player_ids, game_id)
       ActionCable.server.broadcast(
         "users_#{player_id}", 
-        title: "join_game",
-        id: game_id,
+        resource_type: "game",
+        action: "create",
+        args: {
+          id: game_id,
+          player_ids: player_ids,
+          state: "unstarted"
+        },
         session_id: player_id
       )
     end

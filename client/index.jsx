@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-require("./channels/users.js");
+require("./gateways/incoming.js");
+require("./gateways/outgoing.js");
 
-// "<p><b>[#{data.username}]:</b> #{data.message}</p>"
+var App         = require("./components/app.jsx"),
+    $           = require("jquery"),
+    appSelector = document.querySelector("#app");
 
-// var App       = require("./components/app.jsx");
-// var appObject = document.querySelector("#app");
-
-// ReactDOM.render(<App />, appObject);
+ReactDOM.render(<App />, appSelector);
