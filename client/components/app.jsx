@@ -2,6 +2,7 @@ import React from "react";
 
 var GameLauncher    = require("./game_launcher/game_launcher.jsx"),
     GameWaitingRoom = require("./game_waiting_room/game_waiting_room.jsx"),
+    Game            = require("./game/game.jsx"),
     ViewsStore      = require("../stores/views_store.js");
 
 class App extends React.Component {
@@ -15,8 +16,8 @@ class App extends React.Component {
     ViewsStore.addListener("UPDATED_VIEW", this.updateView.bind(this));
   }
 
-  updateView(currentView) {
-    this.setState({currentView: currentView});
+  updateView(currentView, currentArgs) {
+    this.setState({currentView: currentView, currentArgs: currentArgs});
   }
 
   getCurrentView() {
@@ -25,6 +26,8 @@ class App extends React.Component {
         return <GameLauncher />
       case "game_waiting_room":
         return <GameWaitingRoom />
+      case "game":
+        return <Game id={this.state.currentArgs.id} />
     }
   }
 

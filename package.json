@@ -21,7 +21,9 @@
     "rxjs": "latest",
     "jquery": "latest",
     "activesupport": "latest",
-    "moment": "latest"
+    "moment": "latest",
+    "history": "1.17.0",
+    "react-router": "latest"
   }
 }
 

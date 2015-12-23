@@ -4,9 +4,11 @@
 //
 var Dispatcher     = require("../dispatcher"),
     EventEmitter   = require("events").EventEmitter,
+    GamesStore     = require("../stores/games_store.js"),
     assign         = require("object-assign"),
     _store         = {
-      currentView: ""
+      currentView: "",
+      currentArgs: []
     };
 
 var ViewsStore = assign({}, EventEmitter.prototype, {
@@ -24,7 +26,11 @@ var ViewsStore = assign({}, EventEmitter.prototype, {
 
   update: function(name) {
     _store.currentView = name;
-    this.emit("UPDATED_VIEW", _store.currentView);
+    this.emit("UPDATED_VIEW", _store.currentView, _store.currentArgs);
+  },
+
+  updateArgs: function(args) {
+    _store.currentArgs = args;
   }
 });
 
@@ -32,7 +38,13 @@ Dispatcher.register(function(action) {
   switch(action.type) {
     case "CREATE_JOIN_GAME_REQUEST":
       ViewsStore.update("game_waiting_room");
+      break;
   }
+});
+
+GamesStore.addListener("CLONED_GAME", (game) => {
+  ViewsStore.updateArgs({id: game.id});
+  ViewsStore.update("game");
 });
 
 module.exports = ViewsStore;
