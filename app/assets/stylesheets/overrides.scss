@@ -60,6 +60,22 @@ button {
   font-size: 20px;
 }
 
+.btn {
+  border: none;
+  border-radius: $border-radius;
+  padding: ($padding/2) 0;
+  font-family: "Source Code Pro", "sans-serif";
+  font-size: 20px;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: $white;
+  color: $dark-blue;
+}
+
 #game-launcher {
   background-color: $light-red;
   color: $dark-blue;
@@ -75,14 +91,9 @@ button {
     overflow-y: scroll;
   }
 
-  button.find-game-btn {
+  .find-game-btn {
     width: 100%;
     background-color: $dark-blue;
     color: $white;
-  }
-
-  button:hover {
-    background-color: $white;
-    color: $dark-blue;
   }
 }

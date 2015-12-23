@@ -8,7 +8,7 @@ class Game extends React.Component {
   render() {
     return (
       <div id="game">
-        <h1>{this.props.id}</h1>
+        <h1>{this.props.params.id}</h1>
       </div>
     )
   }

@@ -6,4 +6,6 @@ Rails.application.routes.draw do
       resources :join_game_requests
     end
   end
+
+  get "*unmatched_route", to: "games#index"
 end

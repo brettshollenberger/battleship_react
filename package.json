@@ -20,7 +20,7 @@
     "webpack": "^1.12.6",
     "rxjs": "latest",
     "jquery": "latest",
-    "activesupport": "latest",
+    "activesupport": "0.1.4",
     "moment": "latest",
     "history": "1.17.0",
     "react-router": "latest"
