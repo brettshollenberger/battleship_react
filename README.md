@@ -1,5 +1,7 @@
 # Battleship React
 
+![Architecture](./architecture.png)
+
 ## Create SSL Cert for dev
 
 ```bash
