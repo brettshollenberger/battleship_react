@@ -11,9 +11,11 @@ class ActiveGamesList extends React.Component {
       var url = `/games/${game.id}`
 
       return (
-        <Link to={url} key={game.id}>
-          {game.id}
-        </Link>
+        <div>
+          <Link to={url} key={game.id}>
+            {game.id}
+          </Link>
+        </div>
       );
     });
 

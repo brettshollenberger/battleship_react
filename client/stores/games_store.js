@@ -15,6 +15,16 @@ var GamesStore = assign({}, EventEmitter.prototype, {
     }
   },
 
+  update: function(game) {
+    if (_.isUndefined(_store.games[game.id])) {
+      this.clone(game);
+    } else {
+      _store.games[game.id] = game;
+
+      this.emit("UPDATED_GAME", game);
+    }
+  },
+
   // Create an index of the known games, request them
   // from the server as necessary.
   //
@@ -25,10 +35,12 @@ var GamesStore = assign({}, EventEmitter.prototype, {
           id: key,
           loading: true
         }
+
+        this.emit("INDEXED_GAME", key);
       }
     });
 
-    this.emit("INDEXED_GAME");
+    this.emit("INDEXED_GAMES");
   },
 
   get: function(name) {
@@ -51,6 +63,9 @@ Dispatcher.register(function(action) {
       break;
     case "INDEX_GAME":
       GamesStore.index(action.args);
+      break;
+    case "UPDATE_GAME":
+      GamesStore.update(action.args);
       break;
   }
 });

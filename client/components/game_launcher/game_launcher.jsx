@@ -16,7 +16,7 @@ class GameLauncher extends React.Component {
       this.setState({ games: GamesStore.get("games") });
     });
 
-    GamesStore.addListener("INDEXED_GAME", () => {
+    GamesStore.addListener("INDEXED_GAMES", () => {
       this.setState({ games: GamesStore.get("games") });
     });
   }

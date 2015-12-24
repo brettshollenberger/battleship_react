@@ -12,5 +12,11 @@ module.exports = {
       type: "CLONE_GAME",
       args: args
     });
+  },
+  UPDATE_GAME: function(args) {
+    Dispatcher.dispatch({
+      type: "UPDATE_GAME",
+      args: args
+    });
   }
 }
