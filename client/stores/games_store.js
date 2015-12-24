@@ -15,6 +15,22 @@ var GamesStore = assign({}, EventEmitter.prototype, {
     }
   },
 
+  // Create an index of the known games, request them
+  // from the server as necessary.
+  //
+  index: function(options) {
+    _.each(_.keys(options.index), (key) => {
+      if (_.isUndefined(_store.games[key])) {
+        _store.games[key] = {
+          id: key,
+          loading: true
+        }
+      }
+    });
+
+    this.emit("INDEXED_GAME");
+  },
+
   get: function(name) {
     return _store[name];
   },
@@ -32,6 +48,10 @@ Dispatcher.register(function(action) {
   switch(action.type) {
     case "CLONE_GAME":
       GamesStore.clone(action.args);
+      break;
+    case "INDEX_GAME":
+      GamesStore.index(action.args);
+      break;
   }
 });
 

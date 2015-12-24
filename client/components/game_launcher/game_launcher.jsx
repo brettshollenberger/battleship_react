@@ -13,7 +13,11 @@ class GameLauncher extends React.Component {
     }
 
     GamesStore.addListener("CLONED_GAME", (game) => {
-      this.state.games[game.id] = game;
+      this.setState({ games: GamesStore.get("games") });
+    });
+
+    GamesStore.addListener("INDEXED_GAME", () => {
+      this.setState({ games: GamesStore.get("games") });
     });
   }
 

@@ -11,20 +11,25 @@ class ActiveGamesList extends React.Component {
       var url = `/games/${game.id}`
 
       return (
-        <Link to={url}>
+        <Link to={url} key={game.id}>
           {game.id}
         </Link>
       );
     });
 
+    var title, content;
+
     if (_.isEmpty(links)) {
-      var content = (<h3>No Active Games</h3>);
+      title   = <h3>No Active Games</h3>;
+      content = "";
     } else {
-      var content = links
+      title   = <h3>Your Games</h3>;
+      content = links
     }
 
     return (
       <div>
+        {title}
         {content}
       </div>
     );
